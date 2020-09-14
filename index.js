@@ -10,10 +10,10 @@ client.on("ready", () => {
   client.user.setActivity("Among Us")
 })
 
-client.on("message", message => {
+client.on("message", async message => {
   if(message.author.bot) return
-  if(message.content == "lime accuse" || (message.content.startsWith("lime accuse") && message.mentions.members.size == 1 && message.content.split(" ").length == 3)) {
-    message.channel.send(stringReplacement(accusations[Math.floor(Math.random() * accusations.length)], message.mentions.members.first()))
+  if(message.content == "lime accuse") {
+    message.channel.send(stringReplacement(accusations[Math.floor(Math.random() * accusations.length)], message))
   } else if(message.content == "lime defend") {
     message.channel.send(stringReplacement(defends[Math.floor(Math.random() * defends.length)], message))
   } else if(message.content == "lime invite") {
@@ -28,7 +28,7 @@ client.on("message", message => {
       .setTitle("Commands")
       .addFields(
         { name: "lime help", value: "Sends this help message." },
-        { name: "lime accuse [@username opt.]", value: "Accuses a random (or specific) member of the server." },
+        { name: "lime accuse", value: "Accuses a random member of the server." },
         { name: "lime defend", value: "Defends themself or a random member of the server." },
         { name: "lime invite", value: "Sends an invite link to the bot." }
       )
