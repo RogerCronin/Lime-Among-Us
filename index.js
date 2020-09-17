@@ -12,9 +12,14 @@ client.on("ready", () => {
 
 client.on("message", async message => {
   if(message.author.bot) return
-  if(message.content == "lime accuse") {
-    message.channel.send(stringReplacement(accusations[Math.floor(Math.random() * accusations.length)], message))
-  } else if(message.content == "lime defend") {
+  switch(accuseTest(message)) {
+    case 1:
+      message.channel.send(stringReplacement(accusations[Math.floor(Math.random() * accusations.length)], message))
+      break
+    case 2:
+      message.channel.send(stringReplacement(accusations[Math.floor(Math.random() * accusations.length)], message.mentions.members.first()))
+  }
+  if(message.content == "lime defend") {
     message.channel.send(stringReplacement(defends[Math.floor(Math.random() * defends.length)], message))
   } else if(message.content == "lime invite") {
     let embed = new discord.MessageEmbed()
@@ -28,13 +33,18 @@ client.on("message", async message => {
       .setTitle("Commands")
       .addFields(
         { name: "lime help", value: "Sends this help message." },
-        { name: "lime accuse", value: "Accuses a random member of the server." },
+        { name: "lime accuse [@someone opt.]", value: "Accuses a random (or specific) member of the server." },
         { name: "lime defend", value: "Defends themself or a random member of the server." },
         { name: "lime invite", value: "Sends an invite link to the bot." }
       )
     message.channel.send(embed)
   }
 })
+
+function accuseTest(message) {
+  if(message.content == "lime accuse") return 1
+  if(message.mentions.members.size == 1 && message.content.split(" ").length == 3 && message.content.startsWith("lime accuse")) return 2
+}
 
 function stringReplacement(string, input) {
   if(input.permissions) {
