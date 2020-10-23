@@ -6,7 +6,7 @@ Do you loving playing Among Us? Do you hate your friends? Accuse your friends an
 
 `lime help` - Sends a helpful message.
 
-`lime accuse` - Accuses a random member of the server of being imposter.
+`lime accuse [@someone opt.]` - Accuses a random (or specific) member of the server.
 
 `lime defend` - Defends themself or a random member of the server.
 
@@ -18,6 +18,6 @@ If you'd like to self host for some reason, all you have to do is download `inde
 
 [Invite me!](https://discord.com/api/oauth2/authorize?client_id=754379015997095967&permissions=0&scope=bot)
 
-[I make other bots too](https://github.com/RogerCronin)
+[My other bots](https://github.com/RogerCronin)
 
-[Also you should totally follow my Twitter](https://twitter.com/brackets_square)
+[My Twitter](https://twitter.com/brackets_square)
